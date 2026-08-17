@@ -146,9 +146,7 @@ int main() {
     }
 
     return 0;
-}
-
-// Server: Reads from hello.txt and writes to FIFO
+}// Server: Reads from hello.txt and writes to FIFO
 void server() {
     int fifo_fd, file_fd;
     char buffer[1024];
@@ -175,9 +173,7 @@ void server() {
 
     close(file_fd);
     close(fifo_fd);
-}
-
-// Client: Reads from FIFO and prints the content
+}// Client: Reads from FIFO and prints the content
 void client() {
     int fifo_fd;
     char buffer[1024];
@@ -188,9 +184,7 @@ void client() {
     if (fifo_fd == -1) {
         perror("Error opening FIFO");
         exit(EXIT_FAILURE);
-    }
-
-    // Read data from FIFO and print
+    }// Read data from FIFO and print
     while ((bytes_read = read(fifo_fd, buffer, sizeof(buffer))) > 0) {
         write(STDOUT_FILENO, buffer, bytes_read);
     }
