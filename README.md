@@ -26,6 +26,7 @@ Testing the C Program for the desired output.
 ## C Program that illustrate communication between two process using unnamed pipes using Linux API system calls
 
 
+// C Program that illustrate communication between two process using unnamed pipes
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h> 
@@ -45,7 +46,7 @@ int main() {
     pid = fork(); 
 
     if (pid == 0) { 
-        // Child process - Server
+ // Child process - Server
         close(p1[1]); // Close write end of pipe1
         close(p2[0]); // Close read end of pipe2
         server(p1[0], p2[1]); 
@@ -95,8 +96,7 @@ void client(int wfd, int rfd) {
     // Read file contents from server
     n = read(rfd, buff, 2000);
     buff[n] = '\0';
-
-    // Print file contents
+// Print file contents
     write(1, buff, n);
 }
 
@@ -111,6 +111,7 @@ void client(int wfd, int rfd) {
 
 ## PROGRAM
 
+//C Program that illustrate communication between two process using named pipes
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -129,7 +130,7 @@ int main() {
     pid_t pid;
 
     // Create FIFO if it doesn't exist
-    mkfifo(FIFO_FILE, 0666);
+ mkfifo(FIFO_FILE, 0666);
 
     pid = fork();  // Create a child process
 
@@ -179,7 +180,7 @@ void server() {
 
 // Client: Reads from FIFO and prints the content
 void client() {
-    int fifo_fd;
+ int fifo_fd;
     char buffer[1024];
     ssize_t bytes_read;
 
@@ -197,6 +198,7 @@ void client() {
 
     close(fifo_fd);
 }
+
 
 
 
